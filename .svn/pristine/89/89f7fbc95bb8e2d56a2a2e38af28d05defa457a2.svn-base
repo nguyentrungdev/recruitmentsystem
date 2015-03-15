@@ -1,0 +1,74 @@
+package com.aavn.rs.dao.impl;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.aavn.rs.dao.IApplicantDAO;
+import com.aavn.rs.domain.Applicant;
+import com.aavn.rs.dto.ApplicantAdvancedSearch;
+
+@Repository
+public class ApplicantDAO implements IApplicantDAO {
+
+	@Autowired
+	private SessionFactory sessionFactory;
+
+	@Override
+	@Transactional
+	public List<Applicant> searchApplicants(
+			ApplicantAdvancedSearch applicantAdvancedSearch) {
+		// TODO Auto-generated method stub
+
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
+				Applicant.class);
+
+		Date applyFrom = applicantAdvancedSearch.getGraduateFrom();
+		Date applyTo = applicantAdvancedSearch.getApplyTo();
+		Date graduateFrom = applicantAdvancedSearch.getGraduateFrom();
+		Date graduateTo = applicantAdvancedSearch.getGraduateFrom();
+		String email = applicantAdvancedSearch.getEmail();
+		String eventName = applicantAdvancedSearch.getEventName();
+
+		/*
+		 * if (applyFrom != null) criteria.add(Restrictions.ge("graduateTime",
+		 * applyFrom));
+		 * 
+		 * if (applyFrom != null) criteria.add(Restrictions.lt("graduateTime",
+		 * applyTo));
+		 */
+		
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.YEAR, 1990);
+		calendar.set(Calendar.DAY_OF_MONTH, 1);
+		calendar.set(Calendar.MONTH, 1); // Assuming you wanted May 1st
+
+		java.sql.Date date = new java.sql.Date(calendar.getTime().getTime());
+		
+		
+		
+		criteria.add(Restrictions.eq("graduateTime", date));
+		List<Applicant> list = criteria.list();
+
+		System.out.println(list.size());
+
+		System.out.println(email);
+		for (Applicant applicant : list) {
+			System.out.println(
+								  applicant.getFirstName() + "	" +
+								  applicant.getLastName() + "	" +
+								  applicant.getBirthday() + "	" +
+								  applicant.getEmail() + "	"+
+								 applicant.getYearOfExperience());
+		}
+		return list;
+	}
+
+}

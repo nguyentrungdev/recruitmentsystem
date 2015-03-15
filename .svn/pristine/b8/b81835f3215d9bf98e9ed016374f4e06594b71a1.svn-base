@@ -1,0 +1,10 @@
+jdbc.url = jdbc:postgresql://192.168.70.45:5432/RecruitmentSystemDB
+jdbc.driverClassName = org.postgresql.Driver
+jdbc.username = postgres
+jdbc.password = 123456
+hibernate.default_schema = public
+hibernate.show_sql = true
+hibernate.format_sql = false
+hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+hibernate.hbm2ddl.auto = update
+hibernate.flushmode=auto

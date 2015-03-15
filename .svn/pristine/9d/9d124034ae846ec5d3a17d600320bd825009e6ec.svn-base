@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<link rel="stylesheet"
+		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+</h:head>
+<h:body>
+	<ui:composition template="templates/common.xhtml">
+		<ui:param name="page" value="Page 1" />
+		<ui:define name="content">
+			<h:form id="myForm">
+				<c:set var="form" value="applicantBean" />
+				<h1>
+					<h:outputText value="Create New Applicant" />
+				</h1>
+				<h2>
+					<h:outputText value="Form example" />
+				</h2>
+				<h:outputText value="#{applicantBean.applicant.id}" />
+				<h:outputText value="First name: " />
+				<h:inputText id="input" value="#{applicantBean.applicant.firstName}"
+					ng-model="bcd" />
+
+				<h:outputText value="#{applicantBean.applicant.firstName}" />
+
+				<h:outputLabel value="Gender" for="gender" />
+
+				<h:selectOneMenu id="gender"
+					value="#{applicantBean.applicant.gender}">
+					<f:selectItems value="#{applicantBean.genders}" var="gender"
+						itemValue="#{gender.id}" itemLabel="#{gender.label}" />
+				</h:selectOneMenu>
+
+				<h:outputLabel value="Last name:" for="lastName" />
+				<h:inputText id="lastName"
+					value="#{applicantBean.applicant.lastName}" />
+
+				<h:outputLabel value="Email address:" />
+				<h:inputText value="#{applicantBean.applicant.email}" />
+
+				<h:outputLabel value="Date of Birth:" />
+				<h:inputText id="birthday"
+					value="#{applicantBean.applicant.birthday}">
+					<f:convertDateTime pattern="MM/dd/yyyy" />
+				</h:inputText>
+				<br />
+				<h:outputLabel value="University/Lastest Company:" />
+				<h:inputText id="university"
+					value="#{applicantBean.applicant.university}" />
+				<br />
+				<h:outputLabel value="Major/Lastest Position:" />
+				<h:inputText id="major" value="#{applicantBean.applicant.major}" />
+
+				<h:outputLabel for="graduateTime" value="Graduation Time: " />
+				<h:inputText id="graduateTime"
+					value="#{applicantBean.applicant.graduateTime}">
+					<f:convertDateTime pattern="mm/dd/yyyy"/>
+				</h:inputText>
+				<h:message for="graduateTime"></h:message>
+
+				<br />
+				<h:outputLabel for="yearOfExperience" value="Year of Experience: " />
+
+				<h:inputText id="yearOfExperience"
+					value="#{applicantBean.applicant.yearOfExperience}"></h:inputText>
+				<br />
+
+				<h:outputLabel for="skills"
+					value="#{applicantBean.applicant.skills}" />
+				<h:selectManyCheckbox id="skills"
+					value="#{applicantBean.applicant.skills}">
+					<f:selectItems value="#{applicantBean.skills}" var="skill"
+						itemValue="#{skill}" itemLabel="#{skill.label}" />
+				</h:selectManyCheckbox>
+				<ui:remove>
+					<!-- <h:inputText id="anotherSkills" value="#{applicantBean.applicant.anotherSkills}" /> -->
+				</ui:remove>
+				<br />
+				<h:inputText value="#{applicantBean.myValue}" />
+				<h:inputHidden value="#{applicantBean.applicant.id}" />
+				<br />
+				<h:commandButton value="Create" action="#{applicantBean.create}"
+					rendered="#{applicantBean.applicant.id == 0}" />
+				<h:commandButton value="Update" action="#{applicantBean.update}"
+					rendered="#{applicantBean.applicant.id != 0}" />
+				<h:commandButton value="Submit Test"
+					action="#{applicantBean.submitTest}" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

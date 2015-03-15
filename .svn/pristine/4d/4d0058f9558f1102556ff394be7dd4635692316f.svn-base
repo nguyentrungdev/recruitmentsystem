@@ -1,0 +1,38 @@
+package com.aavn.rs.service.impl;
+
+import java.util.List;
+
+import org.hibernate.criterion.Criterion;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.aavn.rs.dao.IApplicantDAO;
+import com.aavn.rs.dao.ICommonDAO;
+import com.aavn.rs.domain.Applicant;
+import com.aavn.rs.dto.ApplicantAdvancedSearch;
+import com.aavn.rs.service.IApplicantService;
+import com.aavn.rs.service.ICommonService;
+
+@Service
+public class ApplicantService extends CommonService<Applicant> implements IApplicantService {
+
+	@Autowired
+	protected IApplicantDAO applicantDAO;	
+	
+	@Override
+	@Transactional
+	public List<Applicant> searchApplicant(ApplicantAdvancedSearch applicantAdvancedSearch) {
+		List<Criterion> criterion = null;
+				
+		return loadByCriterion(criterion);		
+	}
+
+	@Override
+	public String createApplicant(Applicant applicant) {
+		this.save(applicant);
+		return "";
+	}
+	
+	
+}

@@ -1,0 +1,148 @@
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<f:facet name="first">
+		<title>Apllicant Advance Search</title>
+	</f:facet>
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/reset.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/theme.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/style.css" />
+</h:head>
+<h:body>
+	<div class="container">
+		<h:form class="form-horizontal">
+
+			<h1>Applicant advance search</h1>
+
+			<p:fieldset legend="Search criterias" toggleable="true">
+				<div class="row">
+					<div class="col-md-6">
+						<p:outputLabel value="Full name" for="fullNameSearch"></p:outputLabel>
+						<p:inputText id="fullNameSearch"></p:inputText>
+					</div>
+					<div class="col-md-6">
+						<h:outputText value="Email" for="emailSearch"></h:outputText>
+						<p:inputText id="emailSearch"></p:inputText>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<p:outputLabel value="Graduation time" />
+						<p:outputLabel for="graduTimeFromSearch" value="From" />
+						<p:calendar id="graduTimeFromSearch" showOn="button" />
+						<p:outputLabel for="graduTimeToSearch" value="To" />
+						<p:calendar id="graduTimeToSearch" showOn="button" />
+					</div>
+					<div class="col-md-6">
+						<p:outputLabel for="skillSearch" value="Skill:" />
+						<p:selectManyCheckbox id="skillSearch">
+							<f:selectItem itemLabel="Java" itemValue="java" />
+							<f:selectItem itemLabel="Web" itemValue="web" />
+							<f:selectItem itemLabel="PHP" itemValue="php" />
+							<f:selectItem itemLabel=".NET" itemValue="net" />
+							<f:selectItem itemLabel="Mobile" itemValue="mobile" />
+							<f:selectItem itemLabel="Test" itemValue="test" />
+						</p:selectManyCheckbox>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<p:outputLabel value="Apply time" />
+						<p:outputLabel for="applyTimeFromSearch" value="From" />
+						<p:calendar id="applyTimeFromSearch" showOn="button" />
+						<p:outputLabel for="applyTimeToSearch" value="To" />
+						<p:calendar id="applyTimeToSearch" showOn="button" />
+					</div>
+					<div class="col-md-6">
+						<p:outputLabel for="eventSearch" value="Event:" />
+						<p:menuButton>
+							<p:menuitem id="eventSearch" value="Event1"></p:menuitem>
+						</p:menuButton>
+					</div>
+				</div>
+				<div class="row">
+					<p:button value="Search"></p:button>
+					<p:button value="Cancel"></p:button>
+				</div>
+			</p:fieldset>
+			<!-- This is the table of the results -->
+			<p:button value="Export pdf"></p:button>
+			<p:dataTable value="#{applicant_Bean.listApplicants}"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+				paginator="true" rows="10" style="margin-bottom:20px">
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Last Name" />
+					</f:facet>
+					<h:outputText value="#{applicant.lastName} #{applicant.firstName}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Gender" />
+					</f:facet>
+					<h:outputText value="#{applicant.GenderText()}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Birthday" />
+					</f:facet>
+					<h:outputText value="#{applicant.birthday}">
+						<f:convertDateTime pattern="dd-MM-yyyy" />
+					</h:outputText>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="University/ Lastest Company" />
+					</f:facet>
+					<h:outputText value="#{applicant.university}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Major/ Lastest Position" />
+					</f:facet>
+					<h:outputText value="#{applicant.major}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Graduated Time" />
+					</f:facet>
+					<h:outputText value="#{applicant.graduateTime}">
+						<f:convertDateTime pattern="yyyy" />
+					</h:outputText>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Phone" />
+					</f:facet>
+					<h:outputText value="#{applicant.phoneNumber}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Email" />
+					</f:facet>
+					<h:outputText value="#{applicant.email}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Interested in (skills)" />
+					</f:facet>
+					<h:outputText value="#{applicant.SkillsText()}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Event" />
+					</f:facet>
+					<h:outputText value="#{applicant.event.eventName}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</div>
+</h:body>
+</html>

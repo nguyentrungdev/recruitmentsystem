@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:form class="form-horizontal" id="applicantForm">
+	<div class="col-md-9">
+	<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+	</div>
+	<div class="clearfix" />
+	<p:fieldset legend="Personal Infomation">
+
+		<!-- Column Left -->
+		<!-- Row_1 -->
+		<!-- Gender -->
+		<div class="form-group">
+			<div class="form-group col-md-6">
+				<p:outputLabel class="col-md-3 control-label" value="Gender" />
+				<div class="col-md-5">
+					<p:selectOneMenu class="form-control" id="gender"
+						value="#{applicantForm.applicant.gender}">
+						<f:selectItems value="#{applicantForm.genders}" var="gender"
+							itemValue="#{gender.id}" itemLabel="#{gender.label}" />
+					</p:selectOneMenu>
+					<p:messages for="gender"></p:messages>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<!-- Row_2 -->
+		<div class="form-group">
+			<!-- LastName -->
+			<div class="form-group col-md-6">
+				<p:outputLabel for="lastName" class="col-md-3 control-label" value="Last Name"></p:outputLabel>
+				<div class="col-md-9">
+					<p:inputText class="form-control" id="lastName"
+						value="#{applicantForm.applicant.lastName}" required="true"></p:inputText>
+					<p:messages for="lastName" display="icon"></p:messages>
+				</div>
+			</div>
+
+
+
+			<!-- FirstName -->
+			<div class="form-group col-md-6">
+				<p:outputLabel for="firstName" class="col-md-3 control-label" value="First Name" />
+				<div class="col-md-9">
+					<p:inputText class="form-control" id="firstName"
+						value="#{applicantForm.applicant.firstName}" required="true">
+					</p:inputText>
+					<p:messages for="firstName" display="icon"></p:messages>
+				</div>
+			</div>
+		</div>
+
+		<!-- Row_3 -->
+		<div class="form-group">
+			<!-- Date of Birth -->
+			<div class="form-group col-md-6">
+				<p:outputLabel for="dateofBirth" class="col-md-3 control-label" value="Date of Birth"></p:outputLabel>
+				<div class="col-md-9">
+					<p:calendar id="dateofBirth"
+						value="#{applicantForm.applicant.birthday}" required="true"/>
+					<p:messages for="dateofBirth" display="icon"></p:messages>
+				</div>
+			</div>
+
+
+
+			<!-- Email -->
+			<div class="form-group col-md-6">
+				<p:outputLabel for="email" class="col-md-3 control-label" value="Email Address"></p:outputLabel>
+				<div class="col-md-9">
+					<p:inputText class="form-control" id="email"
+						value="#{applicantForm.applicant.email}" required="true"></p:inputText>
+					<p:messages for="email" display="icon"></p:messages>
+				</div>
+			</div>
+		</div>
+		<!-- Row_4 -->
+		<div class="form-group">
+			<!-- Skype Account -->
+			<div class="form-group col-md-6">
+				<p:outputLabel for="skype" class="col-md-3 control-label" value="Skype Account"></p:outputLabel>
+				<div class="col-md-9">
+					<p:inputText class="form-control" id="skype"
+						value="#{applicantForm.applicant.skype}" ></p:inputText>
+					<p:messages for="skype" display="icon"></p:messages>
+				</div>
+			</div>
+
+
+			<!-- Phone -->
+			<div class="form-group col-md-6">
+				<p:outputLabel for="phoneNumber" class="col-md-3 control-label" value="Phone Number"></p:outputLabel>
+				<div class="col-md-9">
+					<p:inputText class="form-control" id="phoneNumber"
+						value="#{applicantForm.applicant.phoneNumber}" required="true"></p:inputText>
+					<p:messages for="phoneNumber" display="icon"></p:messages>
+				</div>
+			</div>
+
+
+		</div>
+		<!-- Row_5 -->
+		<div class="form-group">
+			<!-- Event -->
+			<div class="form-group col-md-6">
+				<p:outputLabel for="event" class="col-md-3 control-label" value="Event" />
+				<div class="col-md-5">
+					<p:selectOneMenu id="event" class="form-control"
+						value="#{applicantForm.eventId}" required="true">
+						<f:selectItems value="#{applicantForm.listEvents}" var="event"
+							itemValue="#{event.id}" itemLabel="#{event.eventName}" >
+						</f:selectItems>
+					</p:selectOneMenu>
+					<p:messages for="event" display="icon"></p:messages>
+				</div>
+			</div>
+		</div>
+	</p:fieldset>
+
+	<p:fieldset legend="Technical Infomation">
+		<!-- Row_1 -->
+		<div class="form_group">
+			<!-- University / Lastest Company -->
+			<div class="form-group col-md-6">
+				<p:outputLabel for="university" class="col-md-3 control-label"
+					value="University/ Lastest Company"></p:outputLabel>
+				<div class="col-md-9">
+					<p:inputText class="form-control" id="university"
+						value="#{applicantForm.applicant.university}" required="true"></p:inputText>
+					<p:messages for="university" display="icon"></p:messages>
+				</div>
+			</div>
+
+
+			<!-- Major / Lastest Position -->
+			<div class="form-group col-md-6">
+				<p:outputLabel for="major" class="col-md-3 control-label"
+					value="Major / Lastest Position"></p:outputLabel>
+				<div class="col-md-9">
+					<p:inputText class="form-control" id="major"
+						value="#{applicantForm.applicant.major}" required="true"></p:inputText>
+					<p:messages for="major" display="icon"></p:messages>
+				</div>
+			</div>
+		</div>
+
+		<!-- Row_2 -->
+		<div class="form_group">
+			<!-- Graduation Time -->
+			<div class="form-group col-md-6">
+				<p:outputLabel class="col-md-3 control-label"
+					value="Graduation Time"></p:outputLabel>
+				<div class="col-md-9">
+					<p:calendar id="graduationTime"
+						value="#{applicantForm.applicant.graduateTime}">
+						<f:convertDateTime pattern="MM/dd/yyyy" />
+					</p:calendar>
+					<p:messages for="graduationTime" display="icon"></p:messages>
+				</div>
+			</div>
+
+			<!-- Year of Experience -->
+			<div class="form-group col-md-6">
+				<p:outputLabel class="col-md-3 control-label"
+					value="Year of Experience"></p:outputLabel>
+				<div class="col-md-9">
+					<p:inputText class="form-control" id="yearOfExp"
+						value="#{applicantForm.applicant.yearOfExperience}"></p:inputText>
+					<p:messages for="yearOfExp" display="icon"></p:messages>
+				</div>
+			</div>
+		</div>
+		<!-- Row 3 -->
+		<div class="form-group">
+			<!-- Skills -->
+			<div class="form-group col-md-6">
+				<p:outputLabel for="graduationTime" class="col-md-3 control-label" value="Skills"></p:outputLabel>
+				<div class="col-md-9">
+					<p:selectManyCheckbox layout="grid" columns="3" id="skills"
+						value="#{applicantForm.selectedSkills}"
+						converter="javax.faces.Integer" required="true">
+						<f:selectItems value="#{applicantForm.skills}" var="skill"
+							itemValue="#{skill.id}" itemLabel="#{skill.label}" required="true"/>
+					</p:selectManyCheckbox>
+					<p:messages for="graduationTime"></p:messages>
+				</div>
+			</div>
+		</div>
+	</p:fieldset>
+	<div>
+		<ui:insert name="buttons" />
+	</div>
+</h:form>
+</html>

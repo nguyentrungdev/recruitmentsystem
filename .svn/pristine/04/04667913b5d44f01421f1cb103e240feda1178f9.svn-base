@@ -1,0 +1,122 @@
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<f:facet name="first">
+		<title>Apllicant Search</title>
+	</f:facet>
+
+
+
+</h:head>
+<h:body>
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/reset.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/theme.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/style.css" />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+				<h:form id="form" class="form-horizontal">
+					<h1>List of applicants</h1>
+					<div class="clearfix"></div>
+					<div class="form-group col-sm-12 col-md-12">
+						<div class="col-sm-12 col-md-6 left">
+							<p:button value="Export"></p:button>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-12 form-group">
+						<p:dataTable id="tblApplicant" var="applicant"
+							value="#{applicant_Bean.listApplicants}"
+							widgetVar="applicantsTable"
+							emptyMessage="No applicants found with given criteria"
+							filteredValue="#{applicant_Bean.filteredApplicants}"
+							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+							paginator="true" rows="10" style="margin-bottom:20px">
+							<f:facet name="header">
+								<p:outputPanel>
+									<h:outputText value="Search all fields:" />
+									<p:inputText id="globalFilter"
+										onkeyup="PF('applicantsTable').filter()" style="width:150px"
+										placeholder="Enter keyword" />
+								</p:outputPanel>
+							</f:facet>
+							<p:column filterBy="#{applicant.lastName}"
+								filterStyleClass="hide" headerText="Full Name">
+								<h:outputText value="#{applicant.lastName}" />
+							</p:column>
+							<p:column filterBy="#{applicant.GenderText()}"
+								filterStyleClass="hide" headerText="Gender">
+								<h:outputText value="#{applicant.GenderText()}" />
+							</p:column>
+							<p:column filterBy="#{applicant.birthday}"
+								filterStyleClass="hide" headerText="Birthday">
+								<h:outputText value="#{applicant.birthday}">
+									<f:convertDateTime pattern="dd-MM-yyyy" />
+								</h:outputText>
+							</p:column>
+							<p:column filterBy="#{applicant.university}"
+								filterStyleClass="hide" headerText="University/ Lastest Company">
+								<h:outputText value="#{applicant.university}" />
+							</p:column>
+							<p:column filterBy="#{applicant.major}" filterStyleClass="hide"
+								headerText="Major/ Lastest Position">
+								<h:outputText value="#{applicant.major}" />
+							</p:column>
+							<p:column filterBy="#{applicant.graduateTime}"
+								filterStyleClass="hide" headerText="Graduated Time">
+								<h:outputText value="#{applicant.graduateTime}">
+									<f:convertDateTime pattern="yyyy" />
+								</h:outputText>
+							</p:column>
+							<p:column filterBy="#{applicant.phoneNumber}"
+								filterStyleClass="hide" headerText="Phone">
+								<h:outputText value="#{applicant.phoneNumber}" />
+							</p:column>
+							<p:column filterBy="#{applicant.email}" filterStyleClass="hide"
+								headerText="Email">
+								<h:outputText value="#{applicant.email}" />
+							</p:column>
+							<p:column headerText="Interested in (skills)"
+								filterBy="#{applicant.SkillsText()}">
+								<h:outputText value=" #{applicant.SkillsText()}" />
+							</p:column>
+							<p:column headerText="Event"
+								filterBy="#{applicant.event.eventName}" footerText="in"
+								filterMatchMode="in">
+								<f:facet name="filter">
+									<p:selectCheckboxMenu label="Events"
+										onchange="PF('applicantsTable').filter()"
+										panelStyle="width:200px" scrollHeight="150">
+										<f:selectItems value="#{event_Bean.listEvents}" var="event"
+											itemValue="#{event.eventName}" itemLabel="#{event.eventName}" />
+									</p:selectCheckboxMenu>
+								</f:facet>
+								<h:outputText value="#{applicant.event.eventName}" />
+							</p:column>
+							<p:column>
+								<p:commandButton id="edit" icon="ui-icon-pencil">
+									<f:ajax execute="edit" render="@form" />
+								</p:commandButton>
+								<p:commandButton id="delete"
+									onclick="if (! confirm('Are you sure you want to delete this item?') ) { return false;}; return true; "
+									action="#{applicant_Bean.deleteApplicant(applicant)}"
+									icon="ui-icon-trash">
+									<f:ajax execute="delete" render="@form" />
+								</p:commandButton>
+
+							</p:column>
+						</p:dataTable>
+					</div>
+				</h:form>
+			</div>
+		</div>
+	</div>
+
+</h:body>
+</html>

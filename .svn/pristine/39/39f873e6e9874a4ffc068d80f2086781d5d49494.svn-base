@@ -1,0 +1,25 @@
+package com.aavn.rs.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.aavn.rs.domain.Event;
+import com.aavn.rs.service.ICommonService;
+import com.aavn.rs.service.IEventService;
+
+@Service
+public class EventService implements IEventService {
+
+	@Autowired
+	private ICommonService commonService;
+
+	@Transactional
+	public List<Event> loadAll() {
+		return (commonService.loadListByClassName(Event.class));
+
+	}
+
+}

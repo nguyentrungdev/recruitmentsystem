@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+     <h:head>
+		<f:facet name="first"></f:facet>
+	</h:head>
+  	 <h:body>
+  	 	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/reset.css" />
+		<link rel="stylesheet" type="text/css"
+			href="#{request.contextPath}/resources/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css"
+			href="#{request.contextPath}/resources/css/theme.css" />
+		<link rel="stylesheet" type="text/css"
+			href="#{request.contextPath}/resources/css/style.css" />
+			<nav class="navbar navbar-default header">
+				<div class="container-fluid">
+					<div class="col-md-2">
+						<h:graphicImage alt="AXON ACTIVE VN" name="/resources/images/AAVN_LOGO.png"/>
+					</div>
+					<div class="col-md-8">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="#">Home</a></li>
+							<li><a href="#">Page 1</a></li>
+							<li><a href="#">Page 2</a></li>
+							<li><a href="#">Page 3</a></li>
+					 	</ul>
+					</div>
+					<div class="dropdown col-md-2">
+						<div class="row">
+							<div class="col-md-12">
+								  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+								    	<p:graphicImage alt="Image"/>
+								  </button>
+								  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Username</a></li>
+								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Logout</a></li>
+								  </ul>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<h:outputText value="Username"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>			
+		
+		<h:outputScript library="js" name="bootstrap.min.js" />
+	 </h:body>
+</html>

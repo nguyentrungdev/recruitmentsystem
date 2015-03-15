@@ -1,0 +1,15 @@
+package com.aavn.rs.service.impl;
+
+import java.io.Serializable;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.aavn.rs.domain.Applicant;
+import com.aavn.rs.service.IApplicantService;
+
+@Service
+@Transactional
+public class ApplicantService extends CommonService<Applicant> implements IApplicantService {
+
+}

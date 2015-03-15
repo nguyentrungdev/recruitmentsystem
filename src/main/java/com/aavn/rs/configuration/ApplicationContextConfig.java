@@ -1,0 +1,24 @@
+package com.aavn.rs.configuration;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+@Configuration
+@ComponentScan("com.aavn.rs")
+@EnableTransactionManagement
+@ImportResource("WEB-INF/hibernate-context.xml")
+public class ApplicationContextConfig {
+	
+	@Bean(name = "viewResolver")
+	public InternalResourceViewResolver getViewResolver() {
+		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+		viewResolver.setPrefix("/pages/");
+		viewResolver.setSuffix(".xhtml");
+		viewResolver.setSuffix(".jsf");
+		return viewResolver;
+	}
+}

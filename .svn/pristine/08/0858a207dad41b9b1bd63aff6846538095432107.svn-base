@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"	>
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition template="templates/common.xhtml">
+		<ui:param name="page" value="Create" />
+		<ui:define name="content">
+			<ui:decorate template="form.xhtml">
+				<ui:define name="button">
+					<h:commandButton value="Update" action="#{applicantBean.create}"
+						rendered="#{applicantBean.applicant.id == 0}" />
+					<p:commandButton value="Back" onclick="window.history.back();" />
+				</ui:define>
+			</ui:decorate>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,7 @@
+package com.aavn.rs.dao;
+
+import com.aavn.rs.domain.Applicant;
+
+public interface IApplicantDAO extends ICommonDAO<Applicant> {
+
+}

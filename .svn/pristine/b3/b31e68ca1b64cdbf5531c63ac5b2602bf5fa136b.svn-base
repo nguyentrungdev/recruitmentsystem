@@ -1,0 +1,95 @@
+package com.aavn.rs.bean;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import com.aavn.rs.domain.Applicant;
+import com.aavn.rs.domain.Skill;
+import com.aavn.rs.service.IApplicantService;
+import com.aavn.rs.service.ICommonService;
+import com.aavn.rs.service.ISkillService;
+import com.aavn.rs.service.StaticServiceContext;
+
+@Component("applicant_Bean")
+@Scope(value = "session")
+public class ApplicantBean implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private IApplicantService applicantService;
+	private ISkillService skillService;
+	private ICommonService commonService;
+	
+	private Applicant applicant;
+	private List<Applicant> listApplicants;
+
+	@PostConstruct
+	public void init() {
+//		applicant = new Applicant();
+//		getAllApplicant();
+		applicantService = StaticServiceContext.getService(IApplicantService.class);
+		skillService = StaticServiceContext.getService(ISkillService.class);
+		commonService = StaticServiceContext.getService(ICommonService.class);
+	}
+	
+	public String saveApplicant(){
+		/*Applicant newApplicant = new Applicant();
+		
+		newApplicant.setEmail("test@aacb.com");
+		newApplicant.setUserName("Test ManytoMany");
+		
+		Skill skill = new Skill();
+		skill.setLabel("Java");
+		skill.setLabel("Javascript");
+		skill.setLabel("IOS");
+		skill.setLabel("PHP");*/
+
+//		applicantService.save(newApplicant);
+//		commonService.save(skill);
+		
+		/*Applicant newApplicant = new Applicant();
+		
+		newApplicant.setEmail("test@aacb.com");
+		newApplicant.setUserName("Test DUY ManytoMany");
+		
+		List<Skill> skills = skillService.getAllSkills();
+		
+		newApplicant.getSkills().add(skills.get(0));
+		newApplicant.getSkills().add(skills.get(1));
+		
+		commonService.save(newApplicant);*/
+		
+		return "output";
+	}
+
+	public Applicant getApplicant() {
+		return applicant;
+	}
+
+	public void setApplicant(Applicant applicant) {
+		this.applicant = applicant;
+	}
+
+	public List<Applicant> getListApplicants() {
+		return listApplicants;
+	}
+
+	public void setListApplicants(List<Applicant> listApplicants) {
+		this.listApplicants = listApplicants;
+	}
+
+	public void getAllApplicant() {
+	}
+
+}

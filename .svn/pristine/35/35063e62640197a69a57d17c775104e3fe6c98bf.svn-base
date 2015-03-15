@@ -1,0 +1,21 @@
+package com.aavn.rs.dao;
+
+import java.util.List;
+
+import org.hibernate.criterion.Criterion;
+
+public interface ICommonDAO<T> {
+	
+	public boolean save(T entity);
+	
+	public boolean update(T entity);
+	
+	public boolean delete(T entity);
+	
+	List<T> loadAll();
+
+	public T getById(int id);
+	
+	public List<T> loadByCriterion(Criterion... criterion);
+
+}

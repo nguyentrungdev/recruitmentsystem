@@ -1,0 +1,31 @@
+package com.aavn.rs.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.aavn.rs.dao.IApplicantDAO;
+import com.aavn.rs.domain.Applicant;
+import com.aavn.rs.dto.ApplicantAdvancedSearch;
+import com.aavn.rs.service.IApplicantService;
+import com.aavn.rs.service.ICommonService;
+
+@Service
+public class ApplicantService extends CommonService<Applicant> implements IApplicantService {
+
+	@Override
+	@Transactional
+	public List<Applicant> searchApplicant(ApplicantAdvancedSearch applicantAdvancedSearch) {
+		return applicantDAO.searchApplicants(applicantAdvancedSearch);		
+	}
+
+	@Override
+	public String createApplicant(Applicant applicant) {
+		this.save(applicant);
+		return "";
+	}
+	
+	
+}

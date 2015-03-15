@@ -1,0 +1,15 @@
+package com.aavn.rs.service;
+
+import java.util.List;
+
+public interface ICommonService {
+
+	public void save(Object entity);
+	
+	public void update(Object entity);
+	
+	public void delete(Object entity);
+	
+	public <T> List<T> loadListByClassName(Class<T> serviceClass);
+	
+}

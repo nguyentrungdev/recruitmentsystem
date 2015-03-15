@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Applicant Form</title>
+	<h:outputStylesheet library="" name="css/sample/mystyle.css" />
+</h:head>
+<h:body>
+	<h3>Applicant Form</h3>
+	<h:form>
+		<div style="border: 1px solid #FFF; float: left; margin-right: 70px;">
+			<h:dataTable value="#{applicant_Bean.listApplicants}" var="applicant">
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+					<h:inputText id="lastName" value="#{applicant.lastName}"></h:inputText>
+					<h:message for="lastName"></h:message>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Age</f:facet>
+					<h:inputText id="firstName" value="#{applicant.firstName}"></h:inputText>
+					<h:message for="firstName"></h:message>
+				</h:column>
+				<!-- <h:column>
+					<f:facet name="header">Action</f:facet>
+					<h:commandButton id="delete" value="Delete"
+						onclick="if (! confirm('Really delete this?') ) { return false;}; return true;"
+						action="#{applicant.deleteEmployee(employee)}"
+						title="Delete this Department">
+						<f:ajax execute="delete" render="@form" />
+					</h:commandButton>
+					<h:commandButton id="edit" value="Edit"
+						action="#{employeeBean.updateEmployee(employee)}"
+						title="Edit this Department">
+						<f:ajax execute="@form" render="@form" />
+					</h:commandButton>
+				</h:column> -->
+			</h:dataTable>
+		</div>
+		<!-- <div style="border: 1px solid #FFF;">
+			<h:outputText value="Name"></h:outputText>
+			<br />
+			<h:inputText id="name" value="#{employeeBean.employee.name}"></h:inputText>
+			<h:message for="name"></h:message>
+			<br />
+			<h:outputText value="Age"></h:outputText>
+			<br />
+			<h:inputText id="age" value="#{employeeBean.employee.age}"></h:inputText>
+			<h:message for="age"></h:message>
+			<br />
+			<h:commandButton id="add" value="Add"
+				action="#{employeeBean.addEmployee()}"
+				title="Delete this Department">
+				<f:ajax execute="@form" render="@form" />
+			</h:commandButton>
+		</div> -->
+	</h:form>
+</h:body>
+</html>

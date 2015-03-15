@@ -1,0 +1,36 @@
+package com.aavn.rs.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.aavn.rs.domain.Applicant;
+import com.aavn.rs.service.IApplicantService;
+import com.aavn.rs.service.ICommonService;
+
+@Service
+public class ApplicantService implements IApplicantService {
+
+	@Autowired
+	private ICommonService commonService;
+
+	@Transactional
+	public void save(Applicant applicant) {
+		commonService.save(applicant);
+	}
+
+	@Transactional
+	public List<Applicant> loadAll() {
+		return (commonService.loadListByClassName(Applicant.class));
+
+	}
+
+	@Transactional
+	public void delete(Applicant applicant) {
+		commonService.delete(applicant);
+
+	}
+
+}

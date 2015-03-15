@@ -1,0 +1,135 @@
+package com.aavn.rs.bean;
+
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+
+import javax.faces.context.FacesContext;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import com.aavn.rs.domain.Gender;
+import com.aavn.rs.domain.Applicant;
+import com.aavn.rs.domain.Skill;
+import com.aavn.rs.service.IApplicantService;
+import com.aavn.rs.service.ISkillService;
+import com.aavn.rs.service.StaticServiceContext;
+
+@Component("applicantBean")
+@Scope("request")
+public class ApplicantBeanTrung {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private Applicant applicant;
+	private int myValue = 7;
+	private List<Skill> skills;
+	private List<Integer> selectedSkills;
+	
+	@Autowired
+	private IApplicantService applicantService;
+	@Autowired
+	private ISkillService skillService;
+
+	public ApplicantBeanTrung() {
+		super();
+		applicantService = StaticServiceContext.getService(IApplicantService.class);
+		skillService = StaticServiceContext.getService(ISkillService.class);
+		skills = skillService.getAllSkills();
+		for (int i = 0; i < skills.size(); i ++) {
+			System.out.println(skills.get(i));
+		}
+		String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
+		System.out.println("id" + id);
+		
+        if (id != null) {
+        	applicant = new Applicant();
+        	applicant.setId(Integer.parseInt(id));
+        	if (id.equals("7")) {
+        		applicant.setFirstName("Nguyễn Văn A");
+        		applicant.setBirthday(new Date());
+        	}
+        } else 
+        	applicant = new Applicant();
+	}
+	
+	public Applicant getApplicant() {
+		return applicant;
+	}
+
+	public void setApplicant(Applicant applicant) {
+		this.applicant = applicant;
+	}
+	
+	
+	public String submit() {
+		applicant.getSkills().clear();
+		for (Integer skillId : selectedSkills) {
+			applicant.getSkills().add(new Skill(skillId));
+		}
+		applicantService.save(applicant);
+		return null;
+	}
+	
+	public String update() {
+		applicantService.save(applicant);
+		return null;
+	}
+	
+	public String submitTest() {
+		return "";
+	}
+	
+	public Gender[] getGenders() {
+		return Gender.values();
+	}
+	
+	public Collection<Skill> getSkills() {
+		System.out.println("ApplicantBean: get skills");
+		return this.skills;
+	}
+
+	public int getMyValue() {
+		return myValue;
+	}
+
+	public void setMyValue(int myValue) {
+		this.myValue = myValue;
+	}
+
+	public IApplicantService getApplicantService() {
+		return applicantService;
+	}
+
+	public void setApplicantService(IApplicantService applicantService) {
+		this.applicantService = applicantService;
+	}
+	
+	public ISkillService getSkillService() {
+		return skillService;
+	}
+
+	public void setSkillService(ISkillService skillService) {
+		this.skillService = skillService;
+	}
+	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public List<Integer> getSelectedSkills() {
+		return selectedSkills;
+	}
+
+	public void setSelectedSkills(List<Integer> selectedSkills) {
+		this.selectedSkills = selectedSkills;
+	}
+
+	public void setSkills(List<Skill> skills) {
+		this.skills = skills;
+	}
+}

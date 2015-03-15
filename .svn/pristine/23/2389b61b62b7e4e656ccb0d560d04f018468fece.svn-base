@@ -1,0 +1,41 @@
+package com.aavn.rs.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.aavn.rs.domain.Applicant;
+import com.aavn.rs.service.IApplicantService;
+import com.aavn.rs.service.ICommonService;
+
+@Service
+public class ApplicantService implements IApplicantService {
+
+	@Autowired
+	private ICommonService commonService;
+
+	@Override
+	public boolean save(Applicant applicant) {
+		return commonService.save(applicant);
+	}
+	
+	@Override
+	public List<Applicant> loadAll() {
+		return (commonService.loadListByClassName(Applicant.class));
+
+	}
+
+	@Override
+	public boolean delete(Applicant applicant) {
+		return commonService.delete(applicant);
+
+	}
+
+	@Override
+	public boolean update(Applicant applicant) {
+		return commonService.update(applicant);
+	}
+	
+	
+}

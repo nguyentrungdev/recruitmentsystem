@@ -1,0 +1,41 @@
+package com.aavn.rs.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.aavn.rs.dao.ICommonDAO;
+import com.aavn.rs.service.ICommonService;
+
+@Service
+public class CommonService implements ICommonService {
+
+	@Autowired
+	private ICommonDAO commonDAO;
+	
+	@Override
+	public void save(Object entity) {
+		commonDAO.save(entity);
+		
+	}
+
+	@Override
+	public void update(Object entity) {
+		commonDAO.update(entity);
+		
+	}
+
+	@Override
+	public void delete(Object entity) {
+		commonDAO.delete(entity);
+		
+	}
+
+	@Override
+	public <T> List<T> loadListByClassName(Class<T> serviceClass) {
+		return (List<T>) commonDAO.loadAll(serviceClass);
+		
+	}
+
+}

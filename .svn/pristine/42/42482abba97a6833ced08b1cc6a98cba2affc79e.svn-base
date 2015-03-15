@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<f:facet name="first"></f:facet>
+</h:head>
+<h:body>
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/reset.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/theme.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/style.css" />
+	<ui:include src="Header.xhtml"></ui:include>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<h:form class="form-horizontal">
+					<p:fieldset legend="Form">
+						<div class="form-group">
+							<p:outputLabel class="col-md-3 control-label" for="inputEmail3"
+								value="Name" />
+							<div class="col-md-9">
+								<p:inputText class="form-control" id="inputEmail3" />
+							</div>
+							<div class="code-section col-md-offset-3 col-md-9">
+								<code>&lt;p:inputText class="form-control"
+									id="inputEmail3"/&gt;</code>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<p:outputLabel class="col-md-3 control-label"
+								for="inputPassword3" value="Password" />
+							<div class="col-md-9">
+								<p:password class="form-control" id="inputPassword3" />
+							</div>
+							<div class="code-section col-md-offset-3 col-md-9">
+								<code>&lt;p:password class="form-control"
+									id="inputPassword3"/&gt;</code>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<p:outputLabel class="col-md-3 control-label" for="datepicker"
+								value="Datepicker" />
+							<div class="col-md-9">
+								<p:calendar id="datepicker" />
+							</div>
+							<div class="code-section col-md-offset-3 col-md-9">
+								<code>&lt;p:calendar id="datepicker"/&gt;</code>
+							</div>
+						</div>
+						<div class="form-group">
+							<p:outputLabel class="col-md-3 control-label" value="Select" />
+							<div class="col-md-9">
+								<p:selectOneMenu>
+									<f:selectItem itemValue="" itemLabel="Select one"></f:selectItem>
+									<f:selectItem itemValue="1" itemLabel="one"></f:selectItem>
+									<f:selectItem itemValue="2" itemLabel="two"></f:selectItem>
+									<f:selectItem itemValue="3" itemLabel="three"></f:selectItem>
+								</p:selectOneMenu>
+							</div>
+							<div class="code-section col-md-offset-3 col-md-9">
+								<code>&lt;p:selectOneMenu&gt;</code>
+								<code>&lt;f:selectItem itemValue="" itemLabel="Select
+									one"/&gt; &lt;f:selectItem itemValue="1" itemLabel="one"/&gt;</code>
+								<code>&lt;/p:selectOneMenu&gt;</code>
+							</div>
+						</div>
+						<div class="form-group">
+							<p:outputLabel class="col-md-3 control-label chkbox-label"
+								value="Check" />
+							<div class="col-md-9">
+								<p:selectManyCheckbox>
+									<f:selectItem itemValue="1" itemLabel="one" />
+									<f:selectItem itemValue="2" itemLabel="two" />
+									<f:selectItem itemValue="3" itemLabel="three" />
+								</p:selectManyCheckbox>
+							</div>
+							<div class="code-section col-md-offset-3 col-md-9">
+								<code>&lt;p:selectManyCheckbox&gt;</code>
+								<code>&lt;f:selectItem itemValue="1" itemLabel="one"/&gt;</code>
+								<code>&lt;/p:selectManyCheckbox&gt;</code>
+							</div>
+						</div>
+						<div class="form-group">
+							<p:outputLabel class="col-md-3 control-label radio-label"
+								value="Choose" />
+							<div class="col-md-9">
+								<p:selectOneRadio>
+									<f:selectItem itemValue="1" itemLabel="one" />
+									<f:selectItem itemValue="2" itemLabel="two" />
+								</p:selectOneRadio>
+							</div>
+							<div class="code-section col-md-offset-3 col-md-9">
+								<code>&lt;p:selectOneRadio&gt;</code>
+								<code>&lt;f:selectItem itemValue="1" itemLabel="one"&gt;</code>
+								<code>&lt;p:selectOneRadio&gt;</code>
+							</div>
+						</div>
+						<div class="form-group">
+							<h:outputText class="col-md-3 control-label chkbox-label"
+								value="Grid:" />
+							<div class="col-md-9">
+								<p:selectManyCheckbox id="grid" layout="grid" columns="3">
+									<f:selectItem itemValue="1" itemLabel="one"></f:selectItem>
+									<f:selectItem itemValue="2" itemLabel="two"></f:selectItem>
+									<f:selectItem itemValue="3" itemLabel="three"></f:selectItem>
+								</p:selectManyCheckbox>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<p:outputLabel class="col-md-3 control-label" value="Select" />
+							<div class="col-md-9">
+								<p:selectOneListbox>
+									<f:selectItem itemValue="1" itemLabel="one" />
+									<f:selectItem itemValue="2" itemLabel="two" />
+									<f:selectItem itemValue="3" itemLabel="three" />
+								</p:selectOneListbox>
+							</div>
+							<div class="code-section col-md-offset-3 col-md-9">
+								<code>&lt;p:selectOneListbox&gt;</code>
+								<code>&lt;f:selectItem itemValue="1" itemLabel="one"&gt;</code>
+								<code>&lt;f:selectItem itemValue="2" itemLabel="two"&gt;</code>
+								<code>&lt;p:selectOneListbox&gt;</code>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class=" col-md-offset-3 col-md-4">
+								<p:button class="form-control" icon="ui-icon-contact"
+									value="Create"></p:button>
+							</div>
+							<div class="clearfix"></div>
+							<div class=" col-md-offset-3 code-section">
+								<code>&lt;p:button icon="ui-icon-contact"/&gt;</code>
+							</div>
+							<div class="col-md-offset-3 col-md-4">
+								<p:link value="Link" />
+							</div>
+							<div class="clearfix"></div>
+							<div class="col-md-offset-3 code-section">
+								<code>&lt;p:link value="Link"/&gt;</code>
+							</div>
+						</div>
+					</p:fieldset>
+				</h:form>
+			</div>
+			<div class="col-md-4">
+				<h:form>
+					<p:fieldset legend="TabView">
+						<div class="col-md-12">
+							<p:tabView>
+								<p:tab title="Tab1">
+									<h:outputText value="Content1" />
+								</p:tab>
+								<p:tab title="Tab2">
+									<h:outputText value="Content2" />
+								</p:tab>
+								<p:tab title="Tab3">
+									<h:outputText value="Content3" />
+								</p:tab>
+							</p:tabView>
+						</div>
+					</p:fieldset>
+					<p:fieldset legend="Data Table">
+						<div class="col-md-12">
+							<p:dataTable var="car" value="#{dtFilterView.cars}"
+								styleClass="table table-striped" widgetVar="carsTable"
+								filteredValue="#{dtFilterView.filteredCars}">> 
+								<p:column headerText="Id">
+									<h:outputText value="#{car.id}" />
+								</p:column>
+
+								<p:column headerText="Year">
+									<h:outputText value="#{car.year}" />
+								</p:column>
+
+								<p:column headerText="Brand">
+									<h:outputText value="#{car.brand}" />
+								</p:column>
+								<p:column filterBy="#{car.color}" filterMatchMode="in">
+									<f:facet name="filter">
+										<p:selectCheckboxMenu label="Color"
+											onchange="PF('carsTable').filter()">
+											<f:selectItems value="#{dtFilterView.colors}" />
+
+										</p:selectCheckboxMenu>
+									</f:facet>
+									<h:outputText value="#{car.color}" />
+								</p:column>
+							</p:dataTable>
+						</div>
+					</p:fieldset>
+					<p:fieldset legend="Basic">
+						<div class="row">
+							<div class="col-md-12">
+								<p:panel header="Basic">
+
+									<h:outputText value="X-Axis" />
+									<div class="dashed axis">
+										<a href="#">Sources of applicants <span
+											class="glyphicon glyphicon-remove-sign right"></span></a>
+									</div>
+									<p:fieldset legend="Chart selector">
+										<div class="row">
+											<div class="col-sm-12 col-md-12">
+												<ul class="icon-list">
+													<li><img src="../../resources/img/bar.png"
+														alt="bar chart" /></li>
+													<li><img src="../../resources/img/graph.png"
+														alt="graph" /></li>
+													<li><img src="../../resources/img/pie.png"
+														alt="pie chart" /></li>
+												</ul>
+											</div>
+										</div>
+									</p:fieldset>
+								</p:panel>
+							</div>
+						</div>
+					</p:fieldset>
+
+				</h:form>
+			</div>
+			<div class="col-md-4">
+				<h:form class="form-horizontal">
+					<p:fieldset legend="Tooltip and dialog">
+						<div class="row">
+							<h:outputLabel class="col-sm-12 col-md-3 control-label">Focus</h:outputLabel>
+							<div class="col-sm-12 col-md-9">
+								<p:inputText id="focus"
+									title="This tooltip is displayed when input gets the focus" />
+							</div>
+							<p:tooltip id="toolTipFocus" for="focus" showEvent="focus"
+								hideEvent="blur" />
+						</div>
+						<div class="clearfix"></div>
+						<div class="spacing"></div>
+						<div class="row">
+							<h:outputText value="Fade: " class="col-sm-12 col-md-3" />
+							<div class="col-sm-12 col-md-9">
+								<h:outputLink id="fade" value="#">
+									<h:outputText value="Fade Effect" />
+								</h:outputLink>
+							</div>
+							<p:tooltip id="toolTipFade" for="fade"
+								value="Fade effect is used by default" />
+						</div>
+						<div class="clearfix"></div>
+						<div class="spacing"></div>
+						<div class="row">
+							<h:form>
+								<div class="col-sm-12 col-md-offset-3 col-md-9">
+									<p:commandButton value="Basic"
+										actionListener="#{DFView.showMessage}" />
+								</div>
+							</h:form>
+						</div>
+						<div class="clearfix"></div>
+						<div class="spacing"></div>
+						<div class="row">
+							<h:form class="form-horizontal">
+								<div class="col-sm-12 col-md-offset-3 col-md-9">
+									<p:commandButton value="Confirm">
+										<p:confirm header="Confirmation" message="Are you sure?"
+											icon="ui-icon-alert" />
+
+									</p:commandButton>
+								</div>
+								<p:confirmDialog global="true" showEffect="fade">
+									<p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" />
+									<p:commandButton value="No" styleClass="ui-confirmdialog-no" />
+								</p:confirmDialog>
+							</h:form>
+						</div>
+
+					</p:fieldset>
+				</h:form>
+				<p:fieldset legend="Typography">
+					<h1>Heading 1</h1>
+					<div class="code-section">
+						<code>font-size: 2.2em;</code>
+					</div>
+					<h2>Heading 2</h2>
+					<div class="code-section">
+						<code>font-size: 2.0em;</code>
+					</div>
+					<h3>Heading 3</h3>
+					<div class="code-section">
+						<code>font-size: 1.8em;</code>
+					</div>
+					<h4>Heading 4</h4>
+					<div class="code-section">
+						<code>font-size: 1.6em;</code>
+					</div>
+					<h5>Heading 5</h5>
+					<div class="code-section">
+						<code>font-size: 1.4em;</code>
+					</div>
+					<h6>Heading 6</h6>
+					<div class="code-section">
+						<code>font-size: 1.2em;</code>
+					</div>
+				</p:fieldset>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<p:fieldset legend="Message">
+					<p:tooltip />
+					<h:form>
+						<p:messages id="messages" showDetail="true" autoUpdate="true"
+							closable="true" />
+						<p:commandButton value="Info"
+							actionListener="#{messagesView.info}" />
+						<p:commandButton value="Warn"
+							actionListener="#{messagesView.warn}" />
+						<p:commandButton value="Error"
+							actionListener="#{messagesView.error}" />
+						<p:commandButton value="Fatal"
+							actionListener="#{messagesView.fatal}" />
+					</h:form>
+
+					<p:separator />
+
+					<h:form class="form-horizontal">
+						<div class="form-group">
+							<p:outputLabel for="default" value="Default:"
+								class="col-sm-12 col-md-3 control-label" />
+							<div class="col-sm-12 col-md-9">
+								<p:inputText id="default" required="true" class="form-control" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<p:outputLabel for="txt" value="Text:"
+								class="col-sm-12 col-md-3 control-label" />
+							<div class="col-sm-12 col-md-9">
+								<p:inputText id="txt" required="true" class="form-control" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<p:outputLabel for="icon" value="Icon:"
+								class="col-sm-12 col-md-3 control-label" />
+							<div class="col-sm-12 col-md-9">
+								<p:inputText id="icon" required="true" class="form-control" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<p:outputLabel for="tt" value="Tooltip:"
+								class="col-sm-12 col-md-3 control-label" />
+							<div class="col-sm-12 col-md-9">
+								<p:inputText id="tt" required="true" class="form-control" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12 col-md-offset-3 col-md-9">
+								<p:commandButton id="submitButton" value="Submit" />
+							</div>
+						</div>
+					</h:form>
+				</p:fieldset>
+			</div>
+			<div class="col-sm-12 col-md-4">
+				<p:fieldset legend="Table">
+					<p:panelGrid columns="3" layout="grid">
+						<h:outputText value="ID" />
+						<h:outputText value="Name" />
+						<h:outputText value="User" />
+
+						<h:outputText value="Content" />
+						<h:outputText value="Content" />
+						<h:outputText value="Content" />
+
+						<h:outputText value="Content" />
+						<h:outputText value="Content" />
+						<h:outputText value="Content" />
+					</p:panelGrid>
+				</p:fieldset>
+			</div>
+			<div class="col-sm-12 col-md-4"></div>
+		</div>
+		<div class="cleafix"></div>
+		<div class="spacing"></div>
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+				<h:form class="form-horizontal">
+
+					<p:growl id="growl" sticky="true" showDetail="true" />
+
+					<p:wizard flowListener="#{userWizard.onFlowProcess}"
+						showNavBar="false" widgetVar="wiz">
+
+						<p:tab id="personal" title="Personal">
+							<p:panel>
+								<p:messages />
+								<div class="form-group col-sm-12 col-md-6">
+									<h:outputText value="Firstname: *"
+										class="control-label col-sm-12 col-md-3" />
+									<div class="col-sm-12 col-md-9">
+										<p:inputText value="#{userWizard.user.firstname}"
+											required="true" label="Firstname" />
+									</div>
+								</div>
+								<div class="form-group col-sm-12 col-md-6">
+									<h:outputText value="Lastname: *"
+										class="control-label col-sm-12 col-md-3" />
+									<div class="col-sm-12 col-md-9">
+										<p:inputText value="#{userWizard.user.lastname}"
+											required="true" label="Lastname" />
+									</div>
+								</div>
+								<div class="form-group col-sm-12 col-md-6">
+									<h:outputText value="Age: "
+										class="control-label col-sm-12 col-md-3" />
+									<div class="col-sm-12 col-md-9">
+										<p:inputText value="#{userWizard.user.age}" />
+									</div>
+								</div>
+								<div class="clearfix"></div>
+								<div class="form-group col-sm-12 col-md-6">
+									<h:outputText value="Skip to last: "
+										class="control-label col-sm-12 col-md-3" />
+									<div class="col-sm-12 col-md-9">
+										<h:selectBooleanCheckbox value="#{userWizard.skip}" />
+									</div>
+								</div>
+								<div class="clearfix"></div>
+								<div
+									class="button-section col-sm-6 col-sm-offset-6 col-md-2 col-md-offset-10">
+									<p:commandButton class="wizard-button" value="Next"
+										onclick="PF('wiz').next();" />
+								</div>
+
+							</p:panel>
+						</p:tab>
+
+						<p:tab id="address" title="Address">
+							<p:panel>
+								<p:messages />
+								<div class="form-group col-sm-12 col-md-6">
+									<h:outputText value="Street: "
+										class="control-label col-sm-12 col-md-3" />
+									<div class="col-sm-12 col-md-9">
+										<p:inputText value="#{userWizard.user.street}" />
+									</div>
+								</div>
+								<div class="form-group col-sm-12 col-md-6">
+									<h:outputText value="Postal Code: "
+										class="control-label col-sm-12 col-md-3" />
+									<div class="col-sm-12 col-md-9">
+										<p:inputText value="#{userWizard.user.postalCode}" />
+									</div>
+								</div>
+								<div class="form-group col-sm-12 col-md-6">
+									<h:outputText value="City: "
+										class="control-label col-sm-12 col-md-3" />
+									<div class="col-sm-12 col-md-9">
+										<p:inputText value="#{userWizard.user.city}" />
+									</div>
+								</div>
+								<div class="clearfix"></div>
+								<div class="form-group col-sm-12 col-md-6">
+									<h:outputText value="Skip to last: "
+										class="control-label col-sm-12 col-md-3" />
+									<div class="col-sm-12 col-md-9">
+										<h:selectBooleanCheckbox value="#{userWizard.skip}" />
+									</div>
+								</div>
+								<div class="clearfix"></div>
+								<div
+									class="button-section col-sm-6 col-sm-offset-6 col-md-2 col-md-offset-10">
+									<p:commandButton class="wizard-button" value="Back"
+										onclick="PF('wiz').back();" />
+									<p:commandButton class="wizard-button" value="Next"
+										onclick="PF('wiz').next();" />
+								</div>
+							</p:panel>
+						</p:tab>
+
+						<p:tab id="contact" title="Contact">
+							<p:panel>
+								<p:messages />
+								<div class="form-group col-sm-12 col-md-6">
+									<h:outputText value="Email: *"
+										class="control-label col-sm-12 col-md-3" />
+									<div class="col-sm-12 col-md-9">
+										<p:inputText value="#{userWizard.user.email}" required="true"
+											label="Email" />
+									</div>
+								</div>
+								<div class="form-group col-sm-12 col-md-6">
+									<h:outputText value="Phone: "
+										class="control-label col-sm-12 col-md-3" />
+									<div class="col-sm-12 col-md-9">
+										<p:inputText value="#{userWizard.user.phone}" />
+									</div>
+								</div>
+								<div class="form-group col-sm-12 col-md-6">
+									<h:outputText value="Additional Info: "
+										class="control-label col-sm-12 col-md-3" />
+									<div class="col-sm-12 col-md-9">
+										<p:inputText value="#{userWizard.user.info}" />
+									</div>
+								</div>
+
+								<div
+									class="button-section col-sm-6 col-sm-offset-6 col-md-2 col-md-offset-10">
+									<p:commandButton class="wizard-button" value="Back"
+										onclick="PF('wiz').back();" />
+									<p:commandButton class="wizard-button" value="Next"
+										onclick="PF('wiz').next();" />
+								</div>
+
+							</p:panel>
+						</p:tab>
+
+						<p:tab id="confirm" title="Confirmation">
+							<p:panel>
+
+								<div class="col-sm-12 col-md-6">
+									<h:outputText value="Firstname: " />
+									<h:outputText value="#{userWizard.user.firstname}"
+										styleClass="outputLabel" />
+								</div>
+								<div class="col-sm-12 col-md-6">
+									<h:outputText value="Lastname: " />
+									<h:outputText value="#{userWizard.user.lastname}"
+										styleClass="outputLabel" />
+								</div>
+								<div class="col-sm-12 col-md-6">
+									<h:outputText value="Age: " />
+									<h:outputText value="#{userWizard.user.age}"
+										styleClass="outputLabel" />
+								</div>
+								<div class="col-sm-12 col-md-6">
+									<h:outputText value="Street: " />
+									<h:outputText value="#{userWizard.user.street}"
+										styleClass="outputLabel" />
+
+								</div>
+								<div class="col-sm-12 col-md-6">
+									<h:outputText value="Postal: " />
+									<h:outputText value="#{userWizard.user.postalCode}"
+										styleClass="outputLabel" />
+								</div>
+								<div class="col-sm-12 col-md-6">
+									<h:outputText value="City: " />
+									<h:outputText value="#{userWizard.user.city}"
+										styleClass="outputLabel" />
+								</div>
+								<div class="col-sm-12 col-md-6">
+									<h:outputText value="Email: " />
+									<h:outputText value="#{userWizard.user.email}"
+										styleClass="outputLabel" />
+								</div>
+								<div class="col-sm-12 col-md-6">
+									<h:outputText value="Phone " />
+									<h:outputText value="#{userWizard.user.phone}"
+										styleClass="outputLabel" />
+								</div>
+								<div class="col-sm-12 col-md-6">
+									<h:outputText value="Info: " />
+									<h:outputText value="#{userWizard.user.info}"
+										styleClass="outputLabel" />
+								</div>
+								<h:outputText />
+								<h:outputText />
+								<div
+									class="button-section col-sm-6 col-sm-offset-6 col-md-3 col-md-offset-9">
+									<p:commandButton class="wizard-button" value="Back"
+										onclick="PF('wiz').back();" />
+
+									<p:commandButton class="wizard-button" value="Submit"
+										actionListener="#{userWizard.save}" update="growl"
+										process="@this" />
+								</div>
+							</p:panel>
+						</p:tab>
+					</p:wizard>
+
+				</h:form>
+			</div>
+		</div>
+
+		<div class="spacing"></div>
+	</div>
+	<ui:include src="Footer.xhtml"></ui:include>
+	<h:outputScript library="js" name="bootstrap.min.js" />
+</h:body>
+</html>

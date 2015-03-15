@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<p:outputPanel id="ApplicantPanel">
+	<p:panelGrid columns="2" columnClasses="label,value"
+		rendered="#{not empty applicant_Bean.applicant}">
+		<h:outputLabel for="lastName" value="Last Name: " />
+		<h:inputText id="lastName"
+			value="#{applicant_Bean.applicant.lastName}" style="font-weight:bold" />
+		<h:outputLabel for="firstName" value="First Name: " />
+		<h:inputText id="firstName"
+			value="#{applicant_Bean.applicant.firstName}"
+			style="font-weight:bold" />
+	</p:panelGrid>
+
+</p:outputPanel>
+<p:commandButton id="ajax"
+	actionListener="#{applicant_Bean.updateApplicant}" value="Update"
+	styleClass="ui-priority-primary">
+</p:commandButton>
+<p:commandButton oncomplete="PF('dialogApplicant').hide()" value="Close"
+	styleClass="ui-icon ui-icon-search"></p:commandButton>
+</html>

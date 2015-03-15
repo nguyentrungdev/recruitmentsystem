@@ -1,0 +1,46 @@
+package com.aavn.rs.bean;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import com.aavn.rs.domain.Skill;
+import com.aavn.rs.service.ISkillService;
+
+@Component("skill_Bean")
+@Scope(value = "session")
+public class SkillBean implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Autowired
+	private ISkillService skillService;
+
+	private List<Skill> listSkills;
+
+	public List<Skill> getListSkills() {
+		listSkills = new ArrayList<Skill>();
+		if (skillService.loadAll() != null)
+			listSkills.addAll(skillService.loadAll());
+		return listSkills;
+	}
+
+	public void setListSkills(List<Skill> listSkills) {
+		this.listSkills = listSkills;
+	}
+
+	public ISkillService getSkillService() {
+		return skillService;
+	}
+
+	public void setSkillService(ISkillService skillService) {
+		this.skillService = skillService;
+	}
+
+}

@@ -1,0 +1,87 @@
+package com.aavn.rs.dao.impl;
+
+import java.util.List;
+import java.lang.reflect.ParameterizedType;
+
+import org.apache.log4j.Logger;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.aavn.rs.dao.ICommonDAO;
+
+@Repository
+@Transactional
+public abstract class CommonDAO<T> implements ICommonDAO<T> {
+
+	@Autowired
+	private SessionFactory sessionFactory;
+
+	private static final Object LOGMES = "Log From BayMax!";
+	private static final Logger LOGGER = Logger.getLogger(CommonDAO.class);
+
+	private Class<T> entityClass;
+
+	@SuppressWarnings("unchecked")
+	public CommonDAO() {
+		 System.out.println("commonDAO Contruc"); 
+		 entityClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+		 System.out.println("End commonđao");
+	}
+
+	@Override
+	@Transactional
+	public boolean save(Object entity) {
+		Boolean flag = false;
+		try {
+			sessionFactory.getCurrentSession().save(entity);
+			flag = true;
+		} catch (Exception e) {
+			LOGGER.error(LOGMES, e);
+
+			flag = false;
+		}
+		return flag;
+	}
+
+	@Override
+	@Transactional
+	public boolean update(Object entity) {
+		Boolean flag = false;
+		try {
+			sessionFactory.getCurrentSession().update(entity);
+			flag = true;
+		} catch (Exception e) {
+			LOGGER.error(LOGMES, e);
+
+			flag = false;
+		}
+		return flag;
+	}
+
+	@Override
+	@Transactional
+	public boolean delete(Object entity) {
+		Boolean flag = false;
+		try {
+			sessionFactory.getCurrentSession().delete(entity);
+			flag = true;
+		} catch (Exception e) {
+			LOGGER.error(LOGMES, e);
+
+			flag = false;
+		}
+		return flag;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<T> loadAll() {
+		System.out.println("entityClass = " + entityClass);
+		return sessionFactory.getCurrentSession().createCriteria(entityClass.getClass()).list();
+	}
+
+}

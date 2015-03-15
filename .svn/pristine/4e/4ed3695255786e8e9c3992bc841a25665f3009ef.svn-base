@@ -1,0 +1,90 @@
+package com.aavn.rs.dao.impl;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.aavn.rs.dao.IApplicantDAO;
+import com.aavn.rs.domain.Applicant;
+import com.aavn.rs.dto.ApplicantAdvancedSearch;
+
+@Repository
+public class ApplicantDAO<T extends Applicant> extends CommonDAO<Applicant> implements IApplicantDAO {
+
+	@Autowired
+	private SessionFactory sessionFactory;
+
+	@Override
+	@Transactional
+	public List<Applicant> searchApplicants(
+			ApplicantAdvancedSearch applicantAdvancedSearch) {
+		// TODO Auto-generated method stub
+
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
+				Applicant.class,"aplc");
+
+		
+		Date graduateFrom = applicantAdvancedSearch.getGraduateFrom();
+		Date graduateTo = applicantAdvancedSearch.getGraduateTo();
+		Date applyFrom = applicantAdvancedSearch.getApplyFrom();
+		Date applyTo = applicantAdvancedSearch.getApplyTo();
+		String email = applicantAdvancedSearch.getEmail();
+		String fullName = applicantAdvancedSearch.getFullName();
+		String eventName = applicantAdvancedSearch.getEventName();
+		eventName="Career";
+		
+	
+		if (graduateFrom != null) 
+			 criteria.add(Restrictions.ge("graduateTime", graduateFrom));
+				
+		if (graduateTo != null) 
+			 criteria.add(Restrictions.le("graduateTime", graduateTo));
+		 
+		if (applyFrom != null) 
+			 criteria.add(Restrictions.ge("applyTime", applyFrom));
+
+		 
+		if (applyFrom != null) 
+			 criteria.add(Restrictions.lt("applyTime", applyTo));
+		 
+		
+		if (email!=null)
+			criteria.add(Restrictions.ilike("email", email,MatchMode.ANYWHERE));
+		if (fullName!=null)
+			criteria.add(Restrictions.ilike("email", fullName,MatchMode.ANYWHERE));
+		
+		if (eventName!=null){
+			criteria.createAlias("aplc.event", "evt");
+			criteria.add(Restrictions.ilike("evt.eventName", eventName,MatchMode.ANYWHERE));
+			
+		}
+		
+			
+	
+		
+		List<Applicant> list = criteria.list();
+
+		System.out.println(list.size());
+
+		/*for (Applicant applicant : list) {
+			System.out.println(
+								applicant.getEvent().getEventName() + "	" +
+								applicant.getFirstName() + "	" +
+								  applicant.getLastName() + "	" +
+								  applicant.getBirthday() + "	" +
+								  applicant.getEmail() );
+		}*/
+		return list;
+	}
+
+}

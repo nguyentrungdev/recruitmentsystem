@@ -1,0 +1,7 @@
+package com.aavn.rs.service;
+
+import com.aavn.rs.domain.Applicant;
+
+public interface IApplicantService extends ICommonService<Applicant>{
+	public String createApplicant(Applicant applicant);
+}

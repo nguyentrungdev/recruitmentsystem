@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<!-- <h:outputScript library="js" name="app.js" /> -->
+</head>
+<h:body>
+	<h:form id="applicantEmailForm">
+		<h:outputLabel value="Click below button to save applicant for testing:" />
+		<br />
+		<h:commandButton value="Submit" action="#{applicant_Bean.searchApplicant}" />
+	</h:form>
+</h:body>
+</html>

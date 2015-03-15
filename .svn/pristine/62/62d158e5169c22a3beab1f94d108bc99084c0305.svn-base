@@ -1,0 +1,17 @@
+package com.aavn.rs.service;
+
+import java.io.Serializable;
+import java.util.List;
+
+public interface ICommonService<T> {
+	List<T> loadAll();
+
+	T getById(int id);
+
+	boolean save(T obj);
+
+	boolean update(T obj);
+
+	boolean delete(int id);
+
+}

@@ -1,0 +1,12 @@
+package com.aavn.rs.dao.impl;
+
+import org.springframework.stereotype.Repository;
+
+import com.aavn.rs.dao.IApplicantDAO;
+import com.aavn.rs.domain.Applicant;
+
+@Repository
+public class ApplicantDAO<T extends Applicant> extends CommonDAO<Applicant> implements IApplicantDAO {
+
+
+}

@@ -1,0 +1,25 @@
+package com.aavn.rs.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.aavn.rs.domain.Skill;
+import com.aavn.rs.service.ICommonService;
+import com.aavn.rs.service.ISkillService;
+
+@Service
+public class SkillService implements ISkillService {
+
+	@Autowired
+	private ICommonService commonService;
+	
+	
+	@Override
+	public List<Skill> getAllSkills() {
+		return commonService.loadListByClassName(Skill.class);
+	}
+
+}

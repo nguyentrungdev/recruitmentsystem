@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<f:facet name="first"></f:facet>
+</h:head>
+<h:body>
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/reset.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/theme.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/resources/css/style.css" />
+	<ui:include src="Header.xhtml"></ui:include>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<h:form class="form-horizontal">
+					<p:fieldset legend="Basic">
+						<div class="form-group">
+							<p:outputLabel class="col-md-3 control-label" for="inputEmail3"
+								value="Name" />
+							<div class="col-md-9">
+								<p:inputText class="form-control" id="inputEmail3"></p:inputText>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<p:outputLabel class="col-md-3 control-label"
+								for="inputPassword3" value="Password" />
+							<div class="col-md-9">
+								<p:password class="form-control" id="inputPassword3"></p:password>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<p:outputLabel class="col-md-3 control-label" for="datepicker"
+								value="Datepicker" />
+							<div class="col-md-9">
+								<p:calendar id="datepicker"></p:calendar>
+							</div>
+						</div>
+						<div class="form-group">
+							<p:outputLabel class="col-md-3 control-label" value="Select" />
+							<div class="col-md-9">
+								<p:selectOneMenu>
+									<f:selectItem itemValue="" itemLabel="Select one"></f:selectItem>
+									<f:selectItem itemValue="1" itemLabel="one"></f:selectItem>
+									<f:selectItem itemValue="2" itemLabel="two"></f:selectItem>
+									<f:selectItem itemValue="3" itemLabel="three"></f:selectItem>
+								</p:selectOneMenu>
+							</div>
+						</div>
+						<div class="form-group">
+							<p:outputLabel class="col-md-3 control-label chkbox-label"
+								value="Check" />
+							<div class="col-md-9">
+								<p:selectManyCheckbox id="basic">
+									<f:selectItem itemValue="1" itemLabel="one"></f:selectItem>
+									<f:selectItem itemValue="2" itemLabel="two"></f:selectItem>
+									<f:selectItem itemValue="3" itemLabel="three"></f:selectItem>
+								</p:selectManyCheckbox>
+							</div>
+						</div>
+						<div class="form-group">
+							<p:outputLabel class="col-md-3 control-label radio-label"
+								value="Choose" />
+							<div class="col-md-9">
+								<p:selectOneRadio>
+									<f:selectItem itemValue="1" itemLabel="one"></f:selectItem>
+									<f:selectItem itemValue="2" itemLabel="two"></f:selectItem>
+								</p:selectOneRadio>
+							</div>
+						</div>
+						<div class="form-group">
+							<h:outputText class="col-md-3 control-label chkbox-label"
+								value="Grid:" />
+							<div class="col-md-9">
+								<p:selectManyCheckbox id="grid" layout="grid" columns="3">
+									<f:selectItem itemValue="1" itemLabel="one"></f:selectItem>
+									<f:selectItem itemValue="2" itemLabel="two"></f:selectItem>
+									<f:selectItem itemValue="3" itemLabel="three"></f:selectItem>
+								</p:selectManyCheckbox>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<p:outputLabel class="col-md-3 control-label" value="Select" />
+							<div class="col-md-9">
+								<p:selectOneListbox>
+									<f:selectItem itemValue="1" itemLabel="one"></f:selectItem>
+									<f:selectItem itemValue="2" itemLabel="two"></f:selectItem>
+									<f:selectItem itemValue="3" itemLabel="three"></f:selectItem>
+								</p:selectOneListbox>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-6">
+								<p:button class="form-control col-md-3" icon="ui-icon-contact"
+									value="Create"></p:button>
+							</div>
+							<p:link value="Link"></p:link>
+						</div>
+					</p:fieldset>
+				</h:form>
+			</div>
+			<div class="col-md-4">
+				<h:form>
+					<p:fieldset legend="Basic">
+						<div class="col-md-12">
+							<p:tabView>
+								<p:tab title="Tab1">
+									<h:outputText value="Content1" />
+								</p:tab>
+								<p:tab title="Tab2">
+									<h:outputText value="Content2" />
+								</p:tab>
+								<p:tab title="Tab3">
+									<h:outputText value="Content3" />
+								</p:tab>
+							</p:tabView>
+						</div>
+					</p:fieldset>
+					<p:fieldset legend="Basic">
+						<div class="col-md-12">
+							<p:dataTable var="car" value="#{dtBasicView.cars}">
+								<p:column headerText="Id">
+									<h:outputText value="#{car.id}" />
+								</p:column>
+
+								<p:column headerText="Year">
+									<h:outputText value="#{car.year}" />
+								</p:column>
+
+								<p:column headerText="Brand">
+									<h:outputText value="#{car.brand}" />
+								</p:column>
+								<p:column filterBy="#{skill}" filterMatchMode="in">
+									<f:facet name="filter">
+										<p:selectCheckboxMenu label="Color"
+											onchange="PF('applicantTable').filter()">
+											<f:selectItem itemLabel="Red" />
+											<f:selectItem itemLabel="Blue" />
+										</p:selectCheckboxMenu>
+									</f:facet>
+									<h:outputText value="#{car.color}" />
+								</p:column>
+							</p:dataTable>
+						</div>
+					</p:fieldset>
+					<p:fieldset legend="Basic">
+						<div class="col-md-12">
+							<p:panel header="Basic">
+								<h:outputText value="Content panel" />
+							</p:panel>
+						</div>
+					</p:fieldset>
+				</h:form>
+			</div>
+			<div class="col-md-4">
+				<h:form class="form-horizontal">
+					<p:fieldset legend="Tooltip">
+						<div class="row">
+							<h:outputLabel class="col-sm-12 col-md-3 control-label">Focus</h:outputLabel>
+							<div class="col-sm-12 col-md-9">
+								<p:inputText id="focus"
+									title="This tooltip is displayed when input gets the focus" />
+							</div>
+							<p:tooltip id="toolTipFocus" for="focus" showEvent="focus"
+								hideEvent="blur" />
+						</div>
+						<div class="clearfix"></div>
+						<div class="row">
+							<h:outputText value="Fade: " class="col-sm-12 col-md-3" />
+							<div class="col-sm-12 col-md-9">
+								<h:outputLink id="fade" value="#">
+									<h:outputText value="Fade Effect" />
+								</h:outputLink>
+							</div>
+							<p:tooltip id="toolTipFade" for="fade"
+								value="Fade effect is used by default" />
+						</div>
+						<div class="clearfix"></div>
+						<div class="row">
+							<h:form>
+								<div class="col-sm-12 col-md-offset-3 col-md-9">
+									<p:commandButton value="Basic"
+										actionListener="#{dfView.showMessage}" />
+								</div>
+							</h:form>
+						</div>
+						<div class="clearfix"></div>
+						<div class="row">
+							<h:form class="form-horizontal">
+								<div class="col-sm-12 col-md-offset-3 col-md-9">
+									<p:commandButton value="Confirm">
+										<p:confirm header="Confirmation" message="Are you sure?"
+											icon="ui-icon-alert" />
+
+									</p:commandButton>
+								</div>
+								<p:confirmDialog global="true" showEffect="fade">
+									<p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" />
+									<p:commandButton value="No" styleClass="ui-confirmdialog-no" />
+								</p:confirmDialog>
+							</h:form>
+						</div>
+
+					</p:fieldset>
+				</h:form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<p:fieldset legend="Message">
+					<p:tooltip />
+					<h:form>
+						<p:messages id="messages" showDetail="true" autoUpdate="true"
+							closable="true" />
+						<p:commandButton value="Info"
+							actionListener="#{messagesView.info}" />
+						<p:commandButton value="Warn"
+							actionListener="#{messagesView.warn}" />
+						<p:commandButton value="Error"
+							actionListener="#{messagesView.error}" />
+						<p:commandButton value="Fatal"
+							actionListener="#{messagesView.fatal}" />
+					</h:form>
+
+					<p:separator />
+
+					<h:form class="form-horizontal">
+						<div class="form-group">
+							<p:outputLabel for="default" value="Default:"
+								class="col-sm-12 col-md-3 control-label" />
+							<div class="col-sm-12 col-md-9">
+								<p:inputText id="default" required="true" class="form-control" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<p:outputLabel for="txt" value="Text:"
+								class="col-sm-12 col-md-3 control-label" />
+							<div class="col-sm-12 col-md-9">
+								<p:inputText id="txt" required="true" class="form-control" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<p:outputLabel for="icon" value="Icon:"
+								class="col-sm-12 col-md-3 control-label" />
+							<div class="col-sm-12 col-md-9">
+								<p:inputText id="icon" required="true" class="form-control" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<p:outputLabel for="tt" value="Tooltip:"
+								class="col-sm-12 col-md-3 control-label" />
+							<div class="col-sm-12 col-md-9">
+								<p:inputText id="tt" required="true" class="form-control" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12 col-md-offset-3 col-md-9">
+								<p:commandButton id="submitButton" value="Submit" />
+							</div>
+						</div>
+					</h:form>
+				</p:fieldset>
+			</div>
+			<div class="col-sm-12 col-md-4">
+				<p:fieldset legend="Typography">
+					<h1>Heading 1</h1>
+					<div class="code-section">
+						<code>font-size: 2.2em;</code>
+					</div>
+					<h2>Heading 2</h2>
+					<div class="code-section">
+						<code>font-size: 2.0em;</code>
+					</div>
+					<h3>Heading 3</h3>
+					<div class="code-section">
+						<code>font-size: 1.8em;</code>
+					</div>
+					<h4>Heading 4</h4>
+					<div class="code-section">
+						<code>font-size: 1.6em;</code>
+					</div>
+					<h5>Heading 5</h5>
+					<div class="code-section">
+						<code>font-size: 1.4em;</code>
+					</div>
+					<h6>Heading 6</h6>
+					<div class="code-section">
+						<code>font-size: 1.2em;</code>
+					</div>
+				</p:fieldset>
+			</div>
+			<div class="col-sm-12 col-md-4"></div>
+		</div>
+		<div class="cleafix"></div>
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+				<h:form>
+
+					<p:growl id="growl" sticky="true" showDetail="true" />
+
+					<p:wizard flowListener="#{userWizard.onFlowProcess}"
+					 showNavBar="false" widgetVar="wiz">
+						
+							<p:tab id="personal" title="Personal">
+								<p:panel>
+									<p:messages />
+									<h:panelGrid columns="2" columnClasses="label, value">
+										<h:outputText value="Firstname: *" />
+										<p:inputText value="#{userWizard.user.firstname}"
+											required="true" label="Firstname" />
+
+										<h:outputText value="Lastname: *" />
+										<p:inputText value="#{userWizard.user.lastname}"
+											required="true" label="Lastname" />
+
+										<h:outputText value="Age: " />
+										<p:inputText value="#{userWizard.user.age}" />
+
+										<h:outputText value="Skip to last: " />
+										<h:selectBooleanCheckbox value="#{userWizard.skip}" />
+									</h:panelGrid>
+									<p:commandButton class="wizard-button" value="Next" onclick="PF('wiz').next();" />
+									
+								</p:panel>
+							</p:tab>
+
+							<p:tab id="address" title="Address">
+								<p:panel>
+									<p:messages />
+									<h:panelGrid columns="2" columnClasses="label, value">
+										<h:outputText value="Street: " />
+										<p:inputText value="#{userWizard.user.street}" />
+
+										<h:outputText value="Postal Code: " />
+										<p:inputText value="#{userWizard.user.postalCode}" />
+
+										<h:outputText value="City: " />
+										<p:inputText value="#{userWizard.user.city}" />
+
+										<h:outputText value="Skip to last: " />
+										<h:selectBooleanCheckbox value="#{userWizard.skip}" />
+									</h:panelGrid>
+									
+									<p:commandButton class="wizard-button" value="Back" onclick="PF('wiz').back();" />
+									<p:commandButton class="wizard-button" value="Next" onclick="PF('wiz').next();" />
+		
+								</p:panel>
+							</p:tab>
+
+							<p:tab id="contact" title="Contact">
+								<p:panel>
+									<p:messages />
+									<h:panelGrid columns="2" columnClasses="label, value">
+										<h:outputText value="Email: *" />
+										<p:inputText value="#{userWizard.user.email}" required="true"
+											label="Email" />
+
+										<h:outputText value="Phone: " />
+										<p:inputText value="#{userWizard.user.phone}" />
+
+										<h:outputText value="Additional Info: " />
+										<p:inputText value="#{userWizard.user.info}" />
+									</h:panelGrid>
+										
+									<p:commandButton class="wizard-button" value="Back" onclick="PF('wiz').back();" />
+									<p:commandButton class="wizard-button" value="Next" onclick="PF('wiz').next();" />
+		
+								</p:panel>
+							</p:tab>
+
+							<p:tab id="confirm" title="Confirmation">
+								<p:panel>
+									<h:panelGrid id="confirmation" columns="3"
+										columnClasses="grid,grid,grid">
+										<h:panelGrid columns="2" columnClasses="label, value">
+											<h:outputText value="Firstname: " />
+											<h:outputText value="#{userWizard.user.firstname}"
+												styleClass="outputLabel" />
+
+											<h:outputText value="Lastname: " />
+											<h:outputText value="#{userWizard.user.lastname}"
+												styleClass="outputLabel" />
+
+											<h:outputText value="Age: " />
+											<h:outputText value="#{userWizard.user.age}"
+												styleClass="outputLabel" />
+										</h:panelGrid>
+
+										<h:panelGrid columns="2" columnClasses="label, value">
+											<h:outputText value="Street: " />
+											<h:outputText value="#{userWizard.user.street}"
+												styleClass="outputLabel" />
+
+											<h:outputText value="Postal: " />
+											<h:outputText value="#{userWizard.user.postalCode}"
+												styleClass="outputLabel" />
+
+											<h:outputText value="City: " />
+											<h:outputText value="#{userWizard.user.city}"
+												styleClass="outputLabel" />
+										</h:panelGrid>
+
+										<h:panelGrid columns="2" columnClasses="label, value">
+											<h:outputText value="Email: " />
+											<h:outputText value="#{userWizard.user.email}"
+												styleClass="outputLabel" />
+
+											<h:outputText value="Phone " />
+											<h:outputText value="#{userWizard.user.phone}"
+												styleClass="outputLabel" />
+
+											<h:outputText value="Info: " />
+											<h:outputText value="#{userWizard.user.info}"
+												styleClass="outputLabel" />
+
+											<h:outputText />
+											<h:outputText />
+										</h:panelGrid>
+									</h:panelGrid>
+									
+									<p:commandButton value="Back" onclick="PF('wiz').back();" />
+		
+									<p:commandButton value="Submit"
+										actionListener="#{userWizard.save}" update="growl"
+										process="@this" />
+								</p:panel>
+							</p:tab>
+					</p:wizard>
+
+				</h:form>
+			</div>
+		</div>
+	</div>
+	<ui:include src="Footer.xhtml"></ui:include>
+</h:body>
+</html>

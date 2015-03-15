@@ -1,0 +1,10 @@
+package com.aavn.rs.service;
+
+import java.util.List;
+
+import com.aavn.rs.domain.Skill;
+
+public interface ISkillService {
+	
+	public List<Skill> getAllSkills();
+}

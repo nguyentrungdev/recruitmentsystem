@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition template="templates/common.xhtml">
+		<ui:param name="headTitle" value="Create Applicant" />
+		<ui:define name="form">
+			<ui:decorate template="templates/form.xhtml">
+				<ui:define name="buttons">
+					<!-- Add Button -->
+					<p:commandButton class="pull-right" id="save" value="Save"
+						action ="#{applicantForm.save}" icon="ui-icon-contact" update="applicantForm"
+						rendered = "#{applicantForm.applicant.id eq 0}"
+						>
+						<!-- <f:ajax execute="add" render="@form" /> -->
+					</p:commandButton>
+					<!-- Cancel Button -->
+					<p:commandButton onclick="window.history.back();" class="pull-right" id="back" value="Back"
+						 icon="ui-icon-trash">
+						<!-- 
+						<f:ajax execute="add" render="@form" /> -->
+					</p:commandButton>
+				</ui:define>
+			</ui:decorate>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
